@@ -111,7 +111,7 @@ void setup(void) {
   tft.setTextColor(0xFDE0, TFT_BLACK);
 
   targetTime = millis() + 1000;
-
+delay(1000);
   FPSerial.begin(9600, SERIAL_8N1, RXD2, TXD2);
 
   Serial.println();
