@@ -107,6 +107,11 @@ void setup(void) {
  EEPROM.begin(EEPROM_SIZE);
  minute = EEPROM.read(0);
  hour =  EEPROM.read(1);
+ alarm_active = EEPROM.read(2);
+
+ if(minute>59){minute=0;}
+ if(hour>24){hour=0;}
+ if(alarm_active>1){alarm_active = 0;}
 
 WiFiManager manager;    
    //manager.resetSettings();
@@ -581,6 +586,7 @@ void set_alarm() {
   set_time();
   EEPROM.write(0, minute);
   EEPROM.write(1, hour);
+  EEPROM.write(2, alarm_active);
   EEPROM.commit();
 }
 
