@@ -214,6 +214,11 @@ void loop() {
   if(alarm_active == 1){ alarm_rings();} 
 
   set_time();
+  
+  if((currentMonth*30 + monthDay) >= 121 && (currentMonth*30 + monthDay) < 331){
+timeClient.setTimeOffset(utcOffsetInSeconds*UTC);} // Change daylight saving time - Summer
+else {timeClient.setTimeOffset((utcOffsetInSeconds*UTC) - 3600);} // Change daylight saving time - Winter
+
 
   // Setup the alarm
   if (tft.getTouch(&x, &y)) {

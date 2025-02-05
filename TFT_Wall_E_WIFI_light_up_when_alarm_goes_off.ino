@@ -187,6 +187,10 @@ void loop() {
   hh = timeClient.getHours();
   mm = timeClient.getMinutes();
   ss = timeClient.getSeconds();
+  
+if((currentMonth*30 + monthDay) >= 121 && (currentMonth*30 + monthDay) < 331){
+timeClient.setTimeOffset(utcOffsetInSeconds*UTC);} // Change daylight saving time - Summer
+else {timeClient.setTimeOffset((utcOffsetInSeconds*UTC) - 3600);} // Change daylight saving time - Winter
 
   // tft.fillRect(10, 200, 50, 40, TFT_BLACK);
   // Serial.println(analogRead(35));

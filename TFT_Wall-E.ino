@@ -149,6 +149,9 @@ void loop() {
   // Serial.println(analogRead(35));
   // tft.setTextColor(0xFFFF);
   // tft.drawNumber(analogRead(35), 20, 210, 2);
+if((currentMonth*30 + monthDay) >= 121 && (currentMonth*30 + monthDay) < 331){
+timeClient.setTimeOffset(utcOffsetInSeconds*UTC);} // Change daylight saving time - Summer
+else {timeClient.setTimeOffset((utcOffsetInSeconds*UTC) - 3600);} // Change daylight saving time - Winter
 
   if(alarm_active == 1){ alarm_rings();} 
 
